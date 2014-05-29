@@ -4,7 +4,7 @@ Enables switching between the public and private repositories easily.
 
 ### Installation
 
-`npm install -g nsr`
+`npm install -g nrs`
 
 ### Usage
 
