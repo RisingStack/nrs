@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/RisingStack/nsr/issues"
   },
+  "bin": {
+    "nrs": "./bin/nrs.js"
+  },
   "homepage": "https://github.com/RisingStack/nsr"
 }
