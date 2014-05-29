@@ -1,5 +1,5 @@
 {
-  "name": "nsr",
+  "name": "nrs",
   "version": "0.0.1",
   "description": "NPM Registry Switcher",
   "main": "index.js",
