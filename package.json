@@ -16,6 +16,10 @@
   ],
   "author": "Gergely Nemeth <mail@nemethgergely.com> (http://twitter.com/nthgergo)",
   "license": "ISC",
+  "dependencies": {
+    "commander": "^2.2.0",
+    "shelljs": "^0.2.6"
+  },
   "bugs": {
     "url": "https://github.com/RisingStack/nsr/issues"
   },
