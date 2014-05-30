@@ -1,4 +1,4 @@
-## NPM Registry Switcher
+## npm registry switcher
 
 Enables switching between the public and private repositories easily.
 
@@ -12,8 +12,24 @@ npm install -g nrs
 
 #### Listing the added repositories
 
+```
+nrs ls
+```
+
 #### Start using a repository
+
+```
+nrs use [alias]
+```
 
 #### Adding a repository
 
+```
+nrs add [alias] [url]
+```
+
 #### Deleting a repository
+
+```
+nrs rm [alias] [url]
+```
