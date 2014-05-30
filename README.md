@@ -31,5 +31,5 @@ nrs add [alias] [url]
 #### Deleting a repository
 
 ```
-nrs rm [alias] [url]
+nrs rm [alias]
 ```
