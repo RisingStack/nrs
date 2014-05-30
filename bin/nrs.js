@@ -3,10 +3,15 @@
 /**
  * Module dependencies
  * */
+var fs = require('fs');
+
 var program = require('commander');
 var shell = require('shelljs');
 
 var pkg = require('./../package.json');
+var userHome = require('../lib/userHome');
+
+var configFilePath = userHome() + '/.nrsrc';
 
 program
   .version(pkg.version)
