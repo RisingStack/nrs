@@ -14,7 +14,7 @@ var configProvider = require('../lib/configProvider');
 var config = configProvider.get();
 
 program
-  .version(pkg.version)
+  .version(pkg.version);
 
 /**
  * Command: use
