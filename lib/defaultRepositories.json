@@ -1,0 +1,6 @@
+{
+  "repositories": {
+    "public": "http://registry.npmjs.org",
+    "public-eu": "http://registry.npmjs.eu"
+  }
+}
