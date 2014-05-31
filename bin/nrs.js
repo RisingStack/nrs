@@ -2,23 +2,26 @@
 
 /**
  * Module dependencies
- * */
-var fs = require('fs');
-
+ */
 var program = require('commander');
 var shell = require('shelljs');
 
 var pkg = require('./../package.json');
-var userHome = require('../lib/userHome');
+var configProvider = require('../lib/configProvider');
 
-var configFilePath = userHome() + '/.nrsrc';
+// Get the config
+var config = configProvider.get();
+console.log(config)
+config.repositories.ssp = 'sss';
+
+configProvider.set(config);
 
 program
   .version(pkg.version)
 
 /**
  * Command: use
- * */
+ */
 program.command('use')
   .description('start using an existing NPM repository settings')
   .action(function(options) {
@@ -27,7 +30,7 @@ program.command('use')
 
 /**
  * Command: list
- * */
+ */
 program.command('list')
   .description('lists all the added NPM repository')
   .action(function(options) {
@@ -36,7 +39,7 @@ program.command('list')
 
 /**
  * Command: add
- * */
+ */
 program.command('add')
   .description('adds a new NPM repository setting')
   .action(function(options) {
@@ -45,7 +48,7 @@ program.command('add')
 
 /**
  * Command: remove
- * */
+ */
 program.command('remove')
   .description('deletes an new NPM repository setting')
   .action(function(options) {
