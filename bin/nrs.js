@@ -5,16 +5,13 @@
  */
 var program = require('commander');
 var shell = require('shelljs');
+var Table = require('cli-table');
 
 var pkg = require('./../package.json');
 var configProvider = require('../lib/configProvider');
 
 // Get the config
 var config = configProvider.get();
-console.log(config)
-config.repositories.ssp = 'sss';
-
-configProvider.set(config);
 
 program
   .version(pkg.version)
@@ -34,7 +31,16 @@ program.command('use')
 program.command('list')
   .description('lists all the added NPM repository')
   .action(function(options) {
+    var table = new Table({
+      head: ['Alias', 'Address']
+    });
 
+    var repository;
+    for (repository in config.repositories) {
+      table.push([repository, config.repositories[repository]])
+    }
+
+    console.log(table.toString());
   });
 
 /**
