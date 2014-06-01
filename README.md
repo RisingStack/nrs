@@ -45,3 +45,13 @@ nrs rm [alias]
 ```
 nrs restore
 ```
+
+### Roadmap
+
+#### v1
+- easy switch between public mirrors
+- add/remove new repository functionality
+
+#### v2
+- proper handling of private repositories
+
