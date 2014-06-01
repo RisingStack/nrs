@@ -79,16 +79,16 @@ program.command('use [alias]')
 program.command('add [alias] [url]')
   .description('adds a new NPM repository setting')
   .action(function(options) {
-
+    console.warn('NOT IMPLEMENTED YET.')
   });
 
 /**
  * Command: remove
  */
-program.command('remove [alias]')
-  .description('deletes an new NPM repository setting')
+program.command('rm [alias]')
+  .description('deletes an existing NPM repository setting')
   .action(function(options) {
-
+    console.warn('NOT IMPLEMENTED YET.')
   });
 
 program.parse(process.argv);

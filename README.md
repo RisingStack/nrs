@@ -1,5 +1,3 @@
-# [Work in Progress] - it does not work for now
-
 ## npm registry switcher
 
 Enables switching between the public and private repositories easily.
