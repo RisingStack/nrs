@@ -61,6 +61,9 @@ program.command('use [alias]')
     var alias = program.rawArgs[3];
     var url = config.repositories[alias];
     var result;
+    if (!alias) {
+      return console.error('An alias must be specified.');
+    }
     if (url) {
       result = shell.exec('npm config set registry ' + url, {silent : true});
       if (result.code ===0) {
@@ -79,7 +82,11 @@ program.command('use [alias]')
 program.command('add [alias] [url]')
   .description('adds a new NPM repository setting')
   .action(function(options) {
-    console.warn('NOT IMPLEMENTED YET.')
+    var alias = program.rawArgs[3];
+    var url = program.rawArgs[4];
+    config.repositories[alias] = url;
+    // save back to the file
+    configProvider.set(config);
   });
 
 /**
@@ -88,7 +95,10 @@ program.command('add [alias] [url]')
 program.command('rm [alias]')
   .description('deletes an existing NPM repository setting')
   .action(function(options) {
-    console.warn('NOT IMPLEMENTED YET.')
+    var alias = program.rawArgs[3];
+    delete config.repositories[alias];
+    // save back to the file
+    configProvider.set(config);
   });
 
 program.parse(process.argv);
