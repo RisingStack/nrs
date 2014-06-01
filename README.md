@@ -19,7 +19,7 @@ nrs current
 #### Listing the added repositories
 
 ```
-nrs ls
+nrs list
 ```
 
 #### Start using a repository
