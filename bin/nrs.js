@@ -13,6 +13,35 @@ var configProvider = require('../lib/configProvider');
 // Get the config
 var config = configProvider.get();
 
+var showCurrent;
+var listRepositories;
+
+showCurrent = function () {
+  var current = shell.exec('npm config get registry', {silent : true});
+  var table = new Table({
+    head: ['Current']
+  });
+  if (current.code === 0) {
+    table.push([current.output]);
+    console.log(table.toString())
+  } else {
+    console.error(current.output)
+  }
+};
+
+listRepositories = function () {
+  var table = new Table({
+    head: ['Alias', 'Address']
+  });
+
+  var repository;
+  for (repository in config.repositories) {
+    table.push([repository, config.repositories[repository]])
+  }
+
+  console.log(table.toString());
+};
+
 program
   .version(pkg.version);
 
@@ -22,16 +51,7 @@ program
 program.command('current')
   .description('shows the current registry being used')
   .action(function(options) {
-    var current = shell.exec('npm config get registry', {silent : true});
-    var table = new Table({
-      head: ['Current']
-    });
-    if (current.code === 0) {
-      table.push([current.output]);
-      console.log(table.toString())
-    } else {
-      console.error(current.output)
-    }
+    showCurrent();
   });
 
 /**
@@ -40,16 +60,7 @@ program.command('current')
 program.command('list')
   .description('lists all the added NPM repository')
   .action(function(options) {
-    var table = new Table({
-      head: ['Alias', 'Address']
-    });
-
-    var repository;
-    for (repository in config.repositories) {
-      table.push([repository, config.repositories[repository]])
-    }
-
-    console.log(table.toString());
+    listRepositories();
   });
 
 /**
@@ -67,7 +78,7 @@ program.command('use [alias]')
     if (url) {
       result = shell.exec('npm config set registry ' + url, {silent : true});
       if (result.code ===0) {
-        console.log('Now using: ', url);
+        showCurrent();
       } else {
         console.error(result.output);
       }
@@ -87,6 +98,7 @@ program.command('add [alias] [url]')
     config.repositories[alias] = url;
     // save back to the file
     configProvider.set(config);
+    listRepositories();
   });
 
 /**
@@ -99,6 +111,7 @@ program.command('rm [alias]')
     delete config.repositories[alias];
     // save back to the file
     configProvider.set(config);
+    listRepositories();
   });
 
 program.parse(process.argv);
