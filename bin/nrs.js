@@ -26,6 +26,24 @@ program.command('use')
   });
 
 /**
+ * Command: current
+ */
+program.command('current')
+  .description('shows the current registry being used')
+  .action(function(options) {
+    var current = shell.exec('npm config get registry', {silent : true});
+    var table = new Table({
+      head: ['Current']
+    });
+    if (current.code === 0) {
+      table.push([current.output]);
+      console.log(table.toString())
+    } else {
+      console.log(current.output)
+    }
+  });
+
+/**
  * Command: list
  */
 program.command('list')

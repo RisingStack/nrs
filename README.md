@@ -12,6 +12,12 @@ npm install -g nrs
 
 ### Usage
 
+####Shows the current registry being used
+
+```
+nrs current
+```
+
 #### Listing the added repositories
 
 ```
