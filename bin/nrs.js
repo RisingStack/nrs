@@ -23,9 +23,9 @@ showCurrent = function () {
   });
   if (current.code === 0) {
     table.push([current.output]);
-    console.log(table.toString())
+    console.log(table.toString());
   } else {
-    console.error(current.output)
+    console.error(current.output);
   }
 };
 
@@ -37,7 +37,9 @@ listRepositories = function () {
 
   var repository;
   for (repository in config.repositories) {
-    table.push([repository, config.repositories[repository]])
+    if(config.repositories.hasOwnProperty(repository)) {
+      table.push([repository, config.repositories[repository]]);
+    }
   }
 
   console.log(table.toString());
