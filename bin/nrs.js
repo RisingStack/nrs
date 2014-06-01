@@ -17,15 +17,6 @@ program
   .version(pkg.version);
 
 /**
- * Command: use
- */
-program.command('use')
-  .description('start using an existing NPM repository settings')
-  .action(function(options) {
-
-  });
-
-/**
  * Command: current
  */
 program.command('current')
@@ -39,7 +30,7 @@ program.command('current')
       table.push([current.output]);
       console.log(table.toString())
     } else {
-      console.log(current.output)
+      console.error(current.output)
     }
   });
 
@@ -62,9 +53,30 @@ program.command('list')
   });
 
 /**
+ * Command: use
+ */
+program.command('use [alias]')
+  .description('start using an existing NPM repository settings')
+  .action(function(options) {
+    var alias = program.rawArgs[3];
+    var url = config.repositories[alias];
+    var result;
+    if (url) {
+      result = shell.exec('npm config set registry ' + url, {silent : true});
+      if (result.code ===0) {
+        console.log('Now using: ', url);
+      } else {
+        console.error(result.output);
+      }
+    } else {
+      return console.error('No repository found with alias:', + alias);
+    }
+  });
+
+/**
  * Command: add
  */
-program.command('add')
+program.command('add [alias] [url]')
   .description('adds a new NPM repository setting')
   .action(function(options) {
 
@@ -73,7 +85,7 @@ program.command('add')
 /**
  * Command: remove
  */
-program.command('remove')
+program.command('remove [alias]')
   .description('deletes an new NPM repository setting')
   .action(function(options) {
 
