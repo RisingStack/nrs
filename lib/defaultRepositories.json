@@ -1,6 +1,10 @@
 {
   "repositories": {
     "public": "http://registry.npmjs.org",
-    "public-eu": "http://registry.npmjs.eu"
+    "public-eu": "http://registry.npmjs.eu",
+    "public-au": "http://registry.npmjs.au",
+    "public-ch": "http://registry.cnpmjs.org",
+    "public-nodejitsu": "http://registry.nodejitsu.com",
+    "public-strongloop": "http://npm.strongloop.com"
   }
 }
