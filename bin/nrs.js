@@ -30,6 +30,7 @@ showCurrent = function () {
 };
 
 listRepositories = function () {
+  config = configProvider.get();
   var table = new Table({
     head: ['Alias', 'Address']
   });
@@ -50,7 +51,7 @@ program
  */
 program.command('current')
   .description('shows the current registry being used')
-  .action(function(options) {
+  .action(function() {
     showCurrent();
   });
 
@@ -59,7 +60,7 @@ program.command('current')
  */
 program.command('list')
   .description('lists all the added NPM repository')
-  .action(function(options) {
+  .action(function() {
     listRepositories();
   });
 
@@ -68,7 +69,7 @@ program.command('list')
  */
 program.command('use [alias]')
   .description('start using an existing NPM repository settings')
-  .action(function(options) {
+  .action(function() {
     var alias = program.rawArgs[3];
     var url = config.repositories[alias];
     var result;
@@ -92,7 +93,7 @@ program.command('use [alias]')
  */
 program.command('add [alias] [url]')
   .description('adds a new NPM repository setting')
-  .action(function(options) {
+  .action(function() {
     var alias = program.rawArgs[3];
     var url = program.rawArgs[4];
     config.repositories[alias] = url;
@@ -106,11 +107,21 @@ program.command('add [alias] [url]')
  */
 program.command('rm [alias]')
   .description('deletes an existing NPM repository setting')
-  .action(function(options) {
+  .action(function() {
     var alias = program.rawArgs[3];
     delete config.repositories[alias];
     // save back to the file
     configProvider.set(config);
+    listRepositories();
+  });
+
+/**
+ * Command: restore
+ */
+program.command('restore')
+  .description('restores the original config file')
+  .action(function() {
+    configProvider.restore();
     listRepositories();
   });
 

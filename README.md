@@ -39,3 +39,9 @@ nrs add [alias] [url]
 ```
 nrs rm [alias]
 ```
+
+#### Restoring the original config
+
+```
+nrs restore
+```
