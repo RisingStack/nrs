@@ -1,10 +1,10 @@
 {
   "name": "nrs",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "NPM Registry Switcher",
   "repository": {
     "type": "git",
-    "url": "https://github.com/RisingStack/nsr.git"
+    "url": "https://github.com/RisingStack/nrs.git"
   },
   "keywords": [
     "npm",
