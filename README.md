@@ -48,7 +48,7 @@ nrs restore
 
 ### Roadmap
 
-#### v1
+#### v1 (done)
 - easy switch between public mirrors
 - add/remove new repository functionality
 
