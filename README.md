@@ -1,3 +1,7 @@
+## DEPRECATED
+
+As of 23th, May (2014) we have per-project `.npmrc` file support, please use that.
+
 ## npm registry switcher
 
 Enables switching between the public and private repositories easily.
